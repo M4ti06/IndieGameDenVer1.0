@@ -25,6 +25,7 @@ class UserProfile(models.Model):
     rank = models.IntegerField(default=1)
     avatar = models.ImageField(upload_to="avatars/", height_field=50, width_field=50)
 
+
 class CustomUser(AbstractUser):
 
     username = models.CharField(
