@@ -38,7 +38,7 @@ class CustomUser(AbstractUser):
     )
 
     profile = models.ForeignKey(
-        UserProfile, on_delete=models.CASCADE, null=False
+        UserProfile, on_delete=models.CASCADE
     )
 
 
