@@ -38,9 +38,8 @@ class CustomUser(AbstractUser):
         unique=True
     )
 
-    profile = models.ForeignKey(
-        UserProfile, on_delete=models.CASCADE
-    )
+    profile = models.OneToOneField(
+        UserProfile, on_delete=models.CASCADE, blank=True, null=True)
 
 
 

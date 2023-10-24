@@ -42,9 +42,12 @@ class Reviews(models.Model):
     game_user_rating = models.DecimalField(max_digits=2, decimal_places=1)
     date_of_publishing = models.DateField()
 
+    def __str__(self):
+        return f"{self.title}"
+
 
 class ReviewsImages(models.Model):
-    image = models.ImageField(upload_to="reviews_images/", width_field=200,height_field=200)
+    image = models.ImageField(upload_to="reviews_images/")
     description = models.CharField(max_length=50)
     review = models.ForeignKey(Reviews, on_delete=models.CASCADE)
 
@@ -54,6 +57,8 @@ class ReviewsVideo(models.Model):
     description = models.CharField(max_length=50)
     review = models.ForeignKey(Reviews, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"{self.description}"
 
 class ReviewsMiniaturesImages(models.Model):
     miniature_image = models.ImageField(upload_to="reviews_miniatures_images/")
@@ -63,8 +68,8 @@ class ReviewsMiniaturesImages(models.Model):
 class ReviewsComments(models.Model):
     username = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     description = models.CharField(max_length=400)
-    likes = models.IntegerField()
-    dislikes = models.IntegerField()
+    likes = models.IntegerField(null=True)
+    dislikes = models.IntegerField(null=True)
     game_review = models.ForeignKey(Reviews,on_delete=models.CASCADE)
 
 
