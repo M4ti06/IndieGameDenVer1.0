@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for review in reviews %}
+<img src="{{review.reviewsminiaturesimages_set.get.miniature_image}}"></img>
+<p>{{review.title}}</p>
+<p>{{review.description}}</p>
+<p>{{review.date_of_publishing}}</p>
+{% endfor %}
+{% endblock %}
