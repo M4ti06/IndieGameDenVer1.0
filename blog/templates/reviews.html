@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 {% for review in reviews %}
-<img src="{{review.reviewsminiaturesimages_set.get.miniature_image}}"></img>
-<p>{{review.title}}</p>
-<p>{{review.description}}</p>
-<p>{{review.date_of_publishing}}</p>
+<div class="card" style="width: 60rem;">
+  <img src="{% static  review.reviewsminiaturesimages_set.get.miniature_image %}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{review.title}} {{review.date_of_publishing}}</h5>
+    <p class="card-text">{{review.description}}</p>
+    <a href="#" class="btn btn-primary">To review</a>
+  </div>
+</div>
 {% endfor %}
 {% endblock %}

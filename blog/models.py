@@ -11,19 +11,19 @@ class Newsroom(models.Model):
 
 
 class NewsroomImages(models.Model):
-    image = models.ImageField(upload_to="newsroom_images/", width_field=200,height_field=200)
+    image = models.ImageField(upload_to="blog/static/newsroom_images/", width_field=200,height_field=200)
     description = models.CharField(max_length=50)
     news = models.ForeignKey(Newsroom, on_delete=models.CASCADE)
 
 
 class NewsroomVideo(models.Model):
-    video = models.FileField(upload_to="newsroom_videos/")
+    video = models.FileField(upload_to="blog/static/newsroom_videos/")
     description = models.CharField(max_length=50)
     news = models.ForeignKey(Newsroom, on_delete=models.CASCADE)
 
 
 class NewsroomMiniaturesImages(models.Model):
-    miniature_image = models.ImageField(upload_to="newsroom_miniatures_images/")
+    miniature_image = models.ImageField(upload_to="blog/static/newsroom_miniatures_images/")
     news = models.ForeignKey(Newsroom, on_delete=models.CASCADE)
 
 
@@ -47,13 +47,13 @@ class Reviews(models.Model):
 
 
 class ReviewsImages(models.Model):
-    image = models.ImageField(upload_to="reviews_images/")
+    image = models.ImageField(upload_to="blog/static/reviews_images/")
     description = models.CharField(max_length=50)
     review = models.ForeignKey(Reviews, on_delete=models.CASCADE)
 
 
 class ReviewsVideo(models.Model):
-    video = models.FileField(upload_to="reviews_videos/")
+    video = models.FileField(upload_to="blog/static/reviews_videos/")
     description = models.CharField(max_length=50)
     review = models.ForeignKey(Reviews, on_delete=models.CASCADE)
 
@@ -61,7 +61,7 @@ class ReviewsVideo(models.Model):
         return f"{self.description}"
 
 class ReviewsMiniaturesImages(models.Model):
-    miniature_image = models.ImageField(upload_to="reviews_miniatures_images/")
+    miniature_image = models.ImageField(upload_to="blog/static/reviews_miniatures_images/")
     review = models.ForeignKey(Reviews, on_delete=models.CASCADE)
 
 
@@ -84,19 +84,19 @@ class Rankings(models.Model):
 
 
 class RankingsImages(models.Model):
-    image = models.ImageField(upload_to="rankings_images/", width_field=200,height_field=200)
+    image = models.ImageField(upload_to="blog/static/rankings_images/", width_field=200,height_field=200)
     description = models.CharField(max_length=50)
     ranking = models.ForeignKey(Rankings, on_delete=models.CASCADE)
 
 
 class RankingsVideo(models.Model):
-    video = models.FileField(upload_to="rankings_videos/")
+    video = models.FileField(upload_to="blog/static/rankings_videos/")
     description = models.CharField(max_length=50)
     ranking = models.ForeignKey(Rankings, on_delete=models.CASCADE)
 
 
 class RankingsMiniaturesImages(models.Model):
-    miniature_image = models.ImageField(upload_to="rankings_miniatures_images/")
+    miniature_image = models.ImageField(upload_to="blog/static/rankings_miniatures_images/")
     ranking = models.ForeignKey(Rankings, on_delete=models.CASCADE)
 
 
@@ -117,19 +117,19 @@ class PendingPremieres(models.Model):
 
 
 class PremieresImages(models.Model):
-    image = models.ImageField(upload_to="premieres_images/", width_field=200,height_field=200)
+    image = models.ImageField(upload_to="blog/static/premieres_images/", width_field=200,height_field=200)
     description = models.CharField(max_length=50)
     premiere = models.ForeignKey(PendingPremieres, on_delete=models.CASCADE)
 
 
 class PremieresVideo(models.Model):
-    video = models.FileField(upload_to="premieres_videos/")
+    video = models.FileField(upload_to="blog/static/premieres_videos/")
     description = models.CharField(max_length=50)
     premiere = models.ForeignKey(PendingPremieres, on_delete=models.CASCADE)
 
 
 class PremieresMiniaturesImages(models.Model):
-    miniature_image = models.ImageField(upload_to="rankings_miniatures_images/")
+    miniature_image = models.ImageField(upload_to="blog/static/rankings_miniatures_images/")
     premiere = models.ForeignKey(PendingPremieres, on_delete=models.CASCADE)
 
 
