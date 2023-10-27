@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="h-100 d-flex align-items-center justify-content-center">
+  <div class="card" style="width: 60rem;">
+    <img src="{% static  review.reviewsminiaturesimages_set.get.miniature_image %}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{review.title}} {{review.date_of_publishing}}</h5>
+      <p class="card-text">{{review.description}}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

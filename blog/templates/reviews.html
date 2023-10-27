@@ -7,7 +7,7 @@
   <div class="card-body">
     <h5 class="card-title">{{review.title}} {{review.date_of_publishing}}</h5>
     <p class="card-text">{{review.description}}</p>
-    <a href="#" class="btn btn-primary">To review</a>
+    <a href="{% url 'reviews-detail' review.id %}" class="btn btn-primary">To review</a>
   </div>
 </div>
 {% endfor %}

@@ -22,5 +22,6 @@ from blog import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.HomeView.as_view(), name="home"),
-    path("reviews", views.ReviewsListView.as_view(), name="reviews")
+    path("reviews", views.ReviewsListView.as_view(), name="reviews"),
+    path("reviews/article/<pk>", views.ReviewsDetailView.as_view(), name="reviews-detail")
 ]
