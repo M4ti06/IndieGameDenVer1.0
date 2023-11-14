@@ -2,12 +2,35 @@
 {% load static %}
 {% block content %}
 {% for review in reviews %}
-<div class="card" style="width: 60rem;">
-  <img src="{% static  review.reviewsminiaturesimages_set.get.miniature_image %}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">{{review.title}} {{review.date_of_publishing}}</h5>
-    <p class="card-text">{{review.description}}</p>
-    <a href="{% url 'reviews-detail' review.id %}" class="btn btn-primary">To review</a>
+<div class="h-100 d-flex align-items-center justify-content-center">
+  <div class="card" style="width: 60rem;">
+    <img src="{{ review.review_minature_image.miniature_image.url }}" class="card-img-top"
+         alt="{{ review.review_minature_image.description }}">
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <h5 class="card-title">{{review.game_title}}</h5>
+        </div>
+        <div class="col-7 d-flex justify-content-center">
+          <h4 class="card-title">{{review.title}}</h4>
+        </div>
+        <div class="col d-flex justify-content-end">
+          <h5 class="card-title">{{review.date_of_publishing}}</h5>
+        </div>
+      </div>
+      <p class="card-text">{{review.description}}</p>
+      <div class="row">
+        <div class="col">
+          <a href="{% url 'reviews-detail' review.id %}" class="btn btn-primary">To review</a>
+        </div>
+        <div class="col d-flex justify-content-end">
+          <form action="" method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-primary" value="Add 'To Read'">
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 {% endfor %}
