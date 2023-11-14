@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.views.generic.base import TemplateView
 from django.views.generic import ListView, DetailView
-from blog.models import Reviews, ReviewsImages
+from blog.models import Reviews, ReviewsImages, ReviewsVideo
 
 
 class HomeView(TemplateView):
@@ -28,5 +28,5 @@ class ReviewsDetailView(DetailView):
         context = super(ReviewsDetailView, self).get_context_data(**kwargs)
         pk = self.kwargs.get(self.pk_url_kwarg)
         context["review_images"] = ReviewsImages.objects.filter(review=pk)
-        print(context["review_images"])
+        context["review_videos"] = ReviewsVideo.objects.filter(review=pk)
         return context

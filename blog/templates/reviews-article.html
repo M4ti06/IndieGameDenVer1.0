@@ -26,6 +26,12 @@
         <img src="{{ review_image.image.url }}" alt="{{ review_image.image.description }}">
       {% endfor %}
     <h3>Video</h3>
+      {% for review_video in review_videos %}
+        <video width="320" height="240" controls>
+            <source src="{{ review_video.video.url }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+      {% endfor %}
   </div>
 </div>
 {% endblock %}
