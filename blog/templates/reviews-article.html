@@ -33,5 +33,59 @@
         </video>
       {% endfor %}
   </div>
+    {% for comment in review_comments %}
+    <div class="card" style="width: 20rem">
+
+        <p>{{ comment.username.username }}</p>
+        <p>{{ comment.comment }}</p>
+        <div class="row">
+            <div class="col d-flex justify-content-end">
+                <p></p>
+            </div>
+             <div class="col d-flex justify-content-end">
+                <p></p>
+            </div>
+             <div class="col d-flex justify-content-end">
+                <p></p>
+            </div>
+             <div class="col d-flex justify-content-end">
+                <p></p>
+            </div>
+             <div class="col d-flex justify-content-end">
+                <p></p>
+            </div>
+            <div class="col d-flex justify-content-end">
+                <p>likes</p>
+            </div>
+            <div class="col">
+                <p>{{ comment.likes }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-flex justify-content-end">
+                <p></p>
+            </div>
+             <div class="col d-flex justify-content-end">
+                <p></p>
+            </div>
+             <div class="col d-flex justify-content-end">
+                <p></p>
+            </div>
+             <div class="col d-flex justify-content-end">
+                <p></p>
+            </div>
+             <div class="col d-flex justify-content-end">
+                <p></p>
+            </div>
+            <div class="col d-flex justify-content-end">
+                <p>dislikes</p>
+            </div>
+
+            <div class="col">
+                <p>{{ comment.dislikes }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 </div>
 {% endblock %}
