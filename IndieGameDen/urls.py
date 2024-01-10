@@ -25,5 +25,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.HomeView.as_view(), name="home"),
     path("reviews", views.ReviewsListView.as_view(), name="reviews"),
-    path("reviews/article/<pk>", views.ReviewsDetailView.as_view(), name="reviews-detail")
+    path("reviews/article/<pk>", views.ReviewsDetailView.as_view(), name="reviews-detail"),
+    path("premieres", views.PremieresListView.as_view(), name="premieres"),
+    path("premieres/article/<pk>", views.PremieresDetailView.as_view(), name="premieres-detail")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
