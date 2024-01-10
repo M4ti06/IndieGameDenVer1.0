@@ -146,6 +146,10 @@ class PendingPremieres(models.Model):
     date_of_publishing = models.DateField()
     premiere = models.ForeignKey(PremieresMiniaturesImages, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"{self.game_title}"
+
+
 class PremieresImages(models.Model):
     image = models.ImageField(upload_to="premieres_images", storage=fs)
     description = models.CharField(max_length=50)
