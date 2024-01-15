@@ -65,7 +65,7 @@ class NewsroomDetailView(DetailView):
     template_name = "newsroom-article.html"
 
     def get_context_data(self, **kwargs):
-        context = super(PremieresDetailView, self).get_context_data(**kwargs)
+        context = super(NewsroomDetailView, self).get_context_data(**kwargs)
         pk = self.kwargs.get(self.pk_url_kwarg)
         context["newsroom_images"] = NewsroomImages.objects.filter(news=pk)
         context["newsroom_videos"] = NewsroomVideo.objects.filter(news=pk)

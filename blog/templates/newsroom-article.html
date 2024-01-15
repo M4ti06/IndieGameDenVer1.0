@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="h-100 d-flex align-items-center justify-content-center row">
+  <div class="card" style="width: 60rem;">
+    <img src="{{ newsroom.miniatures_image.miniature_image.url }}" class="card-img-top"
+         alt="{{ newsroom.miniatures_image.description }}">
+    <div class="card-body">
+        <div class="row">
+        <div class="col">
+          <h5 class="card-title"></h5>
+        </div>
+        <div class="col-7 d-flex justify-content-center">
+          <h4 class="card-title">{{newsroom.title}}</h4>
+        </div>
+        <div class="col d-flex justify-content-end">
+          <h5 class="card-title">{{newsroom.date_of_publishing}}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card d-flex row" style="width: 60rem;">
+      <p>{{ newsroom.content }}</p>
+    <h3>Gallery</h3>
+      {% for newsroom_image in newsroom_images %}
+        <img src="{{ newsroom_image.image.url }}" alt="{{ newsroom_image.image.description }}">
+      {% endfor %}
+    <h3>Video</h3>
+      {% for newsroom_video in newsroom_videos %}
+        <video width="320" height="240" controls>
+            <source src="{{ newsroom_video.video.url }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+      {% endfor %}
+  </div>
+    {% for comment in newsroom_comments %}
+    <div class="card" style="width: 20rem">
+
+        <p>{{ comment.username.username }}</p>
+        <p>{{ comment.comment }}</p>
+        <div class="row">
+            <div class="col d-flex justify-content-end">
+                <p></p>
+            </div>
+             <div class="col d-flex justify-content-end">
+                <p></p>
+            </div>
+             <div class="col d-flex justify-content-end">
+                <p></p>
+            </div>
+             <div class="col d-flex justify-content-end">
+                <p></p>
+            </div>
+             <div class="col d-flex justify-content-end">
+                <p></p>
+            </div>
+            <div class="col d-flex justify-content-end">
+                <p>likes</p>
+            </div>
+            <div class="col">
+                <p>{{ comment.likes }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-flex justify-content-end">
+                <p></p>
+            </div>
+             <div class="col d-flex justify-content-end">
+                <p></p>
+            </div>
+             <div class="col d-flex justify-content-end">
+                <p></p>
+            </div>
+             <div class="col d-flex justify-content-end">
+                <p></p>
+            </div>
+             <div class="col d-flex justify-content-end">
+                <p></p>
+            </div>
+            <div class="col d-flex justify-content-end">
+                <p>dislikes</p>
+            </div>
+
+            <div class="col">
+                <p>{{ comment.dislikes }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
