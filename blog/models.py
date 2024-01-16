@@ -7,11 +7,21 @@ from django.core.files.storage import FileSystemStorage
 fs = FileSystemStorage(location="blog/media")
 
 
+class NewsroomMiniaturesImages(models.Model):
+    miniature_image = models.ImageField(upload_to="newsroom_miniatures_images", storage=fs)
+    description = models.CharField(max_length=50)
+    news_title = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.news_title} {self.description}"
+
+
 class Newsroom(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=300)
     content = models.CharField(max_length=10000)
     date_of_publishing = models.DateField()
+    miniatures_image = models.ForeignKey(NewsroomMiniaturesImages, on_delete=models.CASCADE)
 
 
 class NewsroomImages(models.Model):
@@ -23,11 +33,6 @@ class NewsroomImages(models.Model):
 class NewsroomVideo(models.Model):
     video = models.FileField(upload_to="newsroom_videos", storage=fs)
     description = models.CharField(max_length=50)
-    news = models.ForeignKey(Newsroom, on_delete=models.CASCADE)
-
-
-class NewsroomMiniaturesImages(models.Model):
-    miniature_image = models.ImageField(upload_to="newsroom_miniatures_images", storage=fs)
     news = models.ForeignKey(Newsroom, on_delete=models.CASCADE)
 
 
@@ -160,7 +165,6 @@ class PremieresVideo(models.Model):
     video = models.FileField(upload_to="premieres_videos", storage=fs)
     description = models.CharField(max_length=50)
     premiere = models.ForeignKey(PendingPremieres, on_delete=models.CASCADE)
-
 
 
 class PremieresComments(models.Model):
