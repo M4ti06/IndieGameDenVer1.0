@@ -112,6 +112,7 @@ class Rankings(models.Model):
     title = models.CharField(max_length=100)
     date_of_publishing = models.DateField()
     description = models.CharField(max_length=300)
+    content = models.CharField(max_length=10000)
     ranking_minature_image = models.ForeignKey(RankingsMiniaturesImages, on_delete=models.CASCADE)
 
 

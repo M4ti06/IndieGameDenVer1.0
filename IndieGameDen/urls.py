@@ -30,6 +30,6 @@ urlpatterns = [
     path("premieres/article/<pk>", views.PremieresDetailView.as_view(), name="premieres-detail"),
     path("newsroom", views.NewsroomListView.as_view(), name="newsroom"),
     path("newsroom/article/<pk>", views.NewsroomDetailView.as_view(), name="newsroom-detail"),
-    path("rankings", views.RankingListView(), name="rankings"),
+    path("rankings", views.RankingListView.as_view(), name="rankings"),
     path("rankings/article/<pk>", views.RankingDetailView.as_view(), name="rankings-detail")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
