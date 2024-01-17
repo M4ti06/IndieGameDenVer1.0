@@ -5,6 +5,8 @@ from django.views.generic.base import TemplateView
 from django.views.generic import ListView, DetailView
 from blog.models import Reviews, ReviewsImages, ReviewsVideo, ReviewsComments, PendingPremieres, PremieresVideo
 from blog.models import PremieresComments, PremieresImages, NewsroomComments, NewsroomVideo, Newsroom, NewsroomImages
+from blog.models import Rankings, RankingsComments, RankingsVideo, RankingsImages
+
 
 class HomeView(TemplateView):
     template_name = "home.html"
@@ -70,4 +72,25 @@ class NewsroomDetailView(DetailView):
         context["newsroom_images"] = NewsroomImages.objects.filter(news=pk)
         context["newsroom_videos"] = NewsroomVideo.objects.filter(news=pk)
         context["newsroom_comments"] = NewsroomComments.objects.filter(news=pk)
+        return context
+
+
+class RankingListView(ListView):
+    model = Rankings
+    queryset = Rankings.objects.order_by("date_of_publishing")
+    context_object_name = "rankings"
+    template_name = "rankings.html"
+
+
+class RankingDetailView(DetailView):
+    model = Rankings
+    context_object_name = "ranking"
+    template_name = "ranking-article.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(RankingDetailView, self).get_context_data(**kwargs)
+        pk = self.kwargs.get(self.pk_url_kwarg)
+        context["ranking_images"] = RankingsImages.objects.filter(ranking=pk)
+        context["ranking_videos"] = RankingsVideo.objects.filter(ranking=pk)
+        context["ranking_comments"] = RankingsComments.objects.filter(ranking=pk)
         return context

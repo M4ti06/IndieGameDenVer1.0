@@ -86,7 +86,6 @@ class ReviewsVideo(models.Model):
         return f"{self.description}"
 
 
-
 class ReviewsComments(models.Model):
     username = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     comment = models.CharField(max_length=400)
@@ -100,10 +99,21 @@ class UserGameRatings(models.Model):
     user_game_rating = models.DecimalField(max_digits=2, decimal_places=1)
 
 
+class RankingsMiniaturesImages(models.Model):
+    miniature_image = models.ImageField(upload_to="rankings_miniatures_images", storage=fs)
+    description = models.CharField(max_length=50)
+    ranking_title = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.ranking_title} {self.description}"
+
+
 class Rankings(models.Model):
     title = models.CharField(max_length=100)
     date_of_publishing = models.DateField()
     description = models.CharField(max_length=300)
+    content = models.CharField(max_length=10000)
+    ranking_minature_image = models.ForeignKey(RankingsMiniaturesImages, on_delete=models.CASCADE)
 
 
 class RankingsImages(models.Model):
@@ -116,12 +126,6 @@ class RankingsVideo(models.Model):
     video = models.FileField(upload_to="rankings_videos", storage=fs)
     description = models.CharField(max_length=50)
     ranking = models.ForeignKey(Rankings, on_delete=models.CASCADE)
-
-
-class RankingsMiniaturesImages(models.Model):
-    miniature_image = models.ImageField(upload_to="rankings_miniatures_images", storage=fs)
-    ranking = models.ForeignKey(Rankings, on_delete=models.CASCADE)
-    description = models.CharField(max_length=50)
 
 
 class RankingsComments(models.Model):
